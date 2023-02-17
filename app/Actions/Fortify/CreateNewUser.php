@@ -12,23 +12,25 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
-    public function create(array $input): User
+    public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique(User::class),
-            ],
+            'first_name' => ['required', 'string', 'min:2', 'max:40'],
+            'last_name' => ['required', 'string', 'min:2', 'max:40'],
+            'cpf' => ['required', 'string', 'max:16', Rule::unique(User::class)],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
+            'phone' => ['required', 'string', 'max:16', 'unique:'.User::class],
+            'data_nasc' => ['required', 'date'],
             'password' => $this->passwordRules(),
         ])->validate();
 
         return User::create([
-            'name' => $input['name'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+            'cpf' => $input['cpf'],
             'email' => $input['email'],
+            'phone' => $input['phone'],
+            'data_nasc' => $input['data_nasc'],
             'password' => Hash::make($input['password']),
         ]);
     }
