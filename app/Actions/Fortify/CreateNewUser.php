@@ -19,7 +19,7 @@ class CreateNewUser implements CreatesNewUsers
             'last_name' => ['required', 'string', 'min:2', 'max:40'],
             'cpf' => ['required', 'string', 'max:16', Rule::unique(User::class)],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class),],
-            'phone' => ['required', 'string', 'max:16', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'max:16', Rule::unique(User::class)],
             'data_nasc' => ['required', 'date'],
             'password' => $this->passwordRules(),
         ])->validate();
