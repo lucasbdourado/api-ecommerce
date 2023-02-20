@@ -21,7 +21,9 @@ return [
         'login',
         'logout',
         'register',
-        'user/profile-information'
+        'user/profile-information',
+        '/address',
+        '/api/address'
     ],
 
     'allowed_methods' => ['*'],
