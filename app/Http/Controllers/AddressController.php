@@ -14,6 +14,11 @@ class AddressController extends Controller
         return response()->json($request->user()->addresses);
     }
 
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
+    }
+
     public function find($id)
     {
         if(!$address = Address::findOrFail($id))

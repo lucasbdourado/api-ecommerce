@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Route::middleware(['auth:sanctum', 'verified'])->resource('/address', AddressController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/address', [AddressController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/address/user', [CategoryController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/address/{id}', [AddressController::class, 'find']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/address/create', [AddressController::class, 'create']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/address', [AddressController::class, 'store']);
