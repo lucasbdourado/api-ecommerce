@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/address', [AddressContro
 Route::middleware(['auth:sanctum', 'verified'])->get('/address/{id}/edit', [AddressController::class, 'edit']);
 Route::middleware(['auth:sanctum', 'verified'])->put('/address/{id}', [AddressController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->delete('/address/{id}', [AddressController::class, 'destroy']);
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/products/create', [ProductController::class, 'create']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/products', [ProductController::class, 'store']);
 
