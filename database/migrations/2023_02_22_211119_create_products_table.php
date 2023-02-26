@@ -15,8 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name', 40);
             $table->string('url_name')->unique();
+            $table->text('description')->nullable();
+            $table->string('marca', 40)->nullable();
+            $table->double('altura', 4, 2);
+            $table->double('largura', 4, 2);
+            $table->double('comprimento', 4, 2);
+            $table->double('peso', 10, 3);
+            $table->double('valor', 6, 2);
             $table->unsignedBigInteger('category_id');
-            $table->text('description');
             $table->timestamps();
         });
     }
