@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
-    //
 
     public function index(Request $request)
     {
@@ -31,24 +30,24 @@ class AddressController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cep' => ['required', 'string', 'min:8', 'max:11'],
-            'uf' => ['required', 'string', 'min:2', 'max:2'],
-            'cidade' => ['required', 'string', 'min:2', 'max:40'],
-            'bairro' => ['required', 'string', 'min:2', 'max:40'],
-            'rua' => ['required', 'string', 'min:2', 'max:40'],
-            'numero' => ['required', 'string', 'max:5'],
-            'complemento' => ['max:40'],
+            'postal_code' => ['required', 'string', 'min:8', 'max:11'],
+            'state' => ['required', 'string', 'min:2', 'max:2'],
+            'city' => ['required', 'string', 'min:2', 'max:40'],
+            'neighborhood' => ['required', 'string', 'min:2', 'max:40'],
+            'street' => ['required', 'string', 'min:2', 'max:40'],
+            'number' => ['required', 'string', 'max:5'],
+            'complement' => ['max:40'],
         ]);
 
         Address::create([
                 'user_id' => $request->user()->id,
-                'cep' => $request['cep'],
-                'uf' => $request['uf'],
-                'cidade' => $request['cidade'],
-                'bairro' => $request['bairro'],
-                'rua' => $request['rua'],
-                'numero' => $request['numero'],
-                'complemento' => $request['complemento']
+                'postal_code' => $request['postal_code'],
+                'state' => $request['state'],
+                'city' => $request['city'],
+                'neighborhood' => $request['neighborhood'],
+                'street' => $request['street'],
+                'number' => $request['number'],
+                'complement' => $request['complement']
         ]);
 
         return response()->json($request->user()->addresses);
@@ -69,23 +68,23 @@ class AddressController extends Controller
            return response()->json(['error' => 'Endereço não encontrado!']);
 
         $request->validate([
-            'cep' => ['required', 'string', 'min:8', 'max:11'],
-            'uf' => ['required', 'string', 'min:2', 'max:2'],
-            'cidade' => ['required', 'string', 'min:2', 'max:40'],
-            'bairro' => ['required', 'string', 'min:2', 'max:40'],
-            'rua' => ['required', 'string', 'min:2', 'max:40'],
-            'numero' => ['required', 'string', 'max:5'],
-            'complemento' => ['max:40'],
+            'postal_code' => ['required', 'string', 'min:8', 'max:11'],
+            'state' => ['required', 'string', 'min:2', 'max:2'],
+            'city' => ['required', 'string', 'min:2', 'max:40'],
+            'neighborhood' => ['required', 'string', 'min:2', 'max:40'],
+            'street' => ['required', 'string', 'min:2', 'max:40'],
+            'number' => ['required', 'string', 'max:5'],
+            'complement' => ['max:40'],
         ]);
 
         $address->update([
-            'cep' => $request['cep'],
-            'uf' => $request['uf'],
-            'cidade' => $request['cidade'],
-            'bairro' => $request['bairro'],
-            'rua' => $request['rua'],
-            'numero' => $request['numero'],
-            'complemento' => $request['complemento']
+            'postal_code' => $request['postal_code'],
+            'state' => $request['state'],
+            'city' => $request['city'],
+            'neighborhood' => $request['neighborhood'],
+            'street' => $request['street'],
+            'number' => $request['number'],
+            'complement' => $request['complement']
         ]);
 
         return response()->json($request->user()->addresses);
