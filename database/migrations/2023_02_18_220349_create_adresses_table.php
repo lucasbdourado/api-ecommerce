@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('adresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('cep', 11);
-            $table->string('uf', 2);
-            $table->string('cidade', 40);
-            $table->string('bairro', 40);
-            $table->string('rua', 40);
-            $table->string('numero', 5);
-            $table->string('complemento', 40)->nullable();
+            $table->string('postal_code', 11);
+            $table->string('state', 2);
+            $table->string('city', 40);
+            $table->string('neighborhood', 40);
+            $table->string('street', 40);
+            $table->string('number', 5);
+            $table->string('complement', 40)->nullable();
             $table->timestamps();
         });
     }

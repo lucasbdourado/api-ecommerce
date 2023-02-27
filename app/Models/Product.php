@@ -14,12 +14,12 @@ class Product extends Model
         'url_name',
         'category_id',
         'description',
-        'marca',
-        'altura',
-        'largura',
-        'comprimento',
-        'peso',
-        'valor',
+        'brand',
+        'height',
+        'width',
+        'length',
+        'weight',
+        'price',
         'category_id'
     ];
 
@@ -41,5 +41,10 @@ class Product extends Model
         }
 
         return $allProducts;
+    }
+
+    public function variations()
+    {
+        return $this->hasMany(Variation::class);
     }
 }

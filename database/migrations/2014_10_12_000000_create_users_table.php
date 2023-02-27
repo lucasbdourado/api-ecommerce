@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('first_name', 40);
             $table->string('last_name', 40);
-            $table->string('cpf',15)->unique();
+            $table->string('identity',15)->unique();
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->date('data_nasc');
+            $table->date('dob');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
